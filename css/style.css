@@ -29,15 +29,18 @@ body{
   color:var(--text);
 
   background:
-  linear-gradient(
-    rgba(255,255,255,.88),
-    rgba(255,255,255,.88)
-  ),
-  url("../assets/bg-cover.jpg");
+    linear-gradient(
+      rgba(255,255,255,.92),
+      rgba(255,255,255,.92)
+    ),
+    url("../assets/bg-main.jpg");
 
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
+
+  position:relative;
+  overflow-x:hidden;
 }
 
 img{
@@ -84,11 +87,11 @@ a{
   text-align:center;
 
   background:
-  linear-gradient(
-    rgba(135,206,235,.55),
-    rgba(91,184,223,.55)
-  ),
-  url("../assets/bg-cover.jpg");
+    linear-gradient(
+      rgba(135,206,235,.55),
+      rgba(91,184,223,.55)
+    ),
+    url("../assets/bg-cover.jpg");
 
   background-size:cover;
   background-position:center;
