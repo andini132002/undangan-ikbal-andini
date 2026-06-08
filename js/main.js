@@ -17,14 +17,14 @@ const openBtn = document.getElementById("openInvitation");
 
 const music = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
-
+const coverCountdown = document.getElementById("coverCountdown");
 const countdown = document.getElementById("countdown");
 
 const guestForm = document.getElementById("guestForm");
 const submitBtn = document.getElementById("submitBtn");
 
-const guestList = document.getElementById("guestList");
-
+const guestList = document.getElementById("guestbook");
+const mainContent = document.getElementById("mainContent");
 
 // =====================================================
 // BUKA UNDANGAN
@@ -33,6 +33,7 @@ const guestList = document.getElementById("guestList");
 openBtn.addEventListener("click", async () => {
 
   cover.classList.add("hidden");
+  mainContent.classList.remove("hidden");
 
   try {
 
@@ -147,6 +148,12 @@ function updateCountdown() {
       </div>
     </div>
   `;
+  coverCountdown.innerHTML = `
+${days} Hari
+${hours} Jam
+${minutes} Menit
+${seconds} Detik
+`;
 }
 
 updateCountdown();
