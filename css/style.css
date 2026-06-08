@@ -222,8 +222,9 @@ a{
 /* ===================== */
 
 .verse-card{
-  background:white;
+background:rgba(255,255,255,.95);
 
+backdrop-filter:blur(8px);
   padding:40px;
 
   border-radius:var(--radius);
@@ -267,7 +268,9 @@ a{
 }
 
 .couple-card{
-  background:white;
+  background:rgba(255,255,255,.95);
+
+backdrop-filter:blur(8px);
 
   padding:35px;
 
@@ -310,8 +313,9 @@ a{
 }
 
 .event-card{
-  background:white;
+background:rgba(255,255,255,.95);
 
+backdrop-filter:blur(8px);
   padding:30px;
 
   border-radius:var(--radius);
@@ -390,8 +394,9 @@ a{
 /* ===================== */
 
 .location-section{
-  background:white;
-  border-radius:30px;
+background:rgba(255,255,255,.95);
+
+backdrop-filter:blur(8px);  border-radius:30px;
   padding:30px;
   box-shadow:var(--shadow);
 }
@@ -440,8 +445,9 @@ a{
 /* ===================== */
 
 .guest-form{
-  background:white;
+background:rgba(255,255,255,.95);
 
+backdrop-filter:blur(8px);
   padding:30px;
 
   border-radius:var(--radius);
@@ -656,8 +662,9 @@ a{
 =========================== */
 
 .guest-card{
-  background:#fff;
-  border-radius:20px;
+background:rgba(255,255,255,.95);
+
+backdrop-filter:blur(8px);  border-radius:20px;
   padding:20px;
   margin-bottom:16px;
   box-shadow:0 10px 25px rgba(0,0,0,.08);
