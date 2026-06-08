@@ -175,7 +175,25 @@ setInterval(updateCountdown, 1000);
 // =====================================================
 // LOAD UCAPAN
 // =====================================================
+function formatTanggal(waktu) {
 
+  // Jika sudah format Indonesia
+  if (String(waktu).includes("/")) {
+    return waktu;
+  }
+
+  const date = new Date(waktu);
+
+  return date.toLocaleString("id-ID", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+
+}
 async function loadUcapan() {
 
   try {
@@ -217,8 +235,8 @@ async function loadUcapan() {
         </p>
 
         <small class="guest-time">
-          ${item.waktu}
-        </small>
+  ${formatTanggal(item.waktu)}
+</small>
       `;
 
       guestbook.appendChild(card);
