@@ -353,19 +353,30 @@ a{
 }
 
 .location-btn{
-  display:inline-block;
 
-  margin-top:25px;
+  display:block;
+
+  width:100%;
+
+  text-align:center;
+
+  margin-top:20px;
 
   background:var(--primary-dark);
 
   color:white;
 
-  padding:14px 28px;
+  padding:16px;
 
-  border-radius:999px;
+  border-radius:20px;
+
+  font-weight:600;
 
   transition:.3s;
+
+  transform:translateY(-2px);
+}
+
 }
 
 .location-btn:hover{

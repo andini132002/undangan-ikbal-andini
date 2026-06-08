@@ -184,29 +184,56 @@ async function loadUcapan() {
 
     const data = await res.json();
 
-    guestList.innerHTML = "";
+    const guestbook =
+      document.getElementById("guestbook");
+
+    guestbook.innerHTML = "";
+
+    if (!data.length) {
+
+      guestbook.innerHTML = `
+        <div class="empty-message">
+          Belum ada ucapan & doa.
+        </div>
+      `;
+
+      return;
+    }
 
     data.forEach(item => {
 
-      const card = document.createElement("div");
+      const card =
+        document.createElement("div");
 
       card.className = "guest-card";
 
       card.innerHTML = `
-        <h4>${item.nama}</h4>
+        <h4 class="guest-header">
+          ${item.nama}
+        </h4>
 
-        <p>${item.ucapan}</p>
+        <p class="guest-message">
+          ${item.ucapan}
+        </p>
 
-        <span>${item.waktu}</span>
+        <small class="guest-time">
+          ${item.waktu}
+        </small>
       `;
 
-      guestList.appendChild(card);
+      guestbook.appendChild(card);
 
     });
 
-  } catch (err) {
+  } catch (error) {
 
-    console.error(err);
+    console.error(error);
+
+    document.getElementById("guestbook").innerHTML = `
+      <div class="error-message">
+        Gagal memuat ucapan.
+      </div>
+    `;
 
   }
 
@@ -224,7 +251,6 @@ guestForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   submitBtn.disabled = true;
-
   submitBtn.innerText = "Mengirim...";
 
   const nama =
@@ -235,7 +261,7 @@ guestForm.addEventListener("submit", async (e) => {
 
   try {
 
-    const res = await fetch(API_URL, {
+    const response = await fetch(API_URL, {
 
       method: "POST",
 
@@ -250,33 +276,45 @@ guestForm.addEventListener("submit", async (e) => {
 
     });
 
-    const result = await res.json();
+    const result =
+      await response.json();
 
     if (result.success) {
 
       guestForm.reset();
 
-      alert(
-        "Terima kasih atas ucapan & doanya ❤️"
-      );
+      document
+        .getElementById("successMessage")
+        .classList.remove("hidden");
 
       loadUcapan();
 
+      setTimeout(() => {
+
+        document
+          .getElementById("successMessage")
+          .classList.add("hidden");
+
+      }, 4000);
+
     }
 
-  } catch (err) {
+  } catch (error) {
 
-    console.error(err);
+    console.error(error);
 
     alert(
-      "Gagal mengirim ucapan. Silakan coba lagi."
+      "Gagal mengirim ucapan."
     );
 
+  } finally {
+
+    submitBtn.disabled = false;
+
+    submitBtn.innerText =
+      "Kirim Ucapan";
+
   }
-
-  submitBtn.disabled = false;
-
-  submitBtn.innerText = "Kirim Ucapan";
 
 });
 // =====================================================
