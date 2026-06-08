@@ -3,7 +3,7 @@
 // =====================================================
 
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbw3rBBb40FKfKtkdNSfb6CHs30HbNJ4y-DSZX8wx3mj-IeDUESuR8ZXHvisaHHS4UiK/exec";
+  "https://script.google.com/macros/s/AKfycbx3Xdy6aVWy-9AA-8XwaWDYNs0s1MzIANo5SYh0D0ODYv5q_8BVNyBtrUIMQjycP87i/exec";
 
 const targetDate = new Date("2026-06-19T09:00:00");
 
@@ -261,20 +261,15 @@ guestForm.addEventListener("submit", async (e) => {
 
   try {
 
-    const response = await fetch(API_URL, {
+   const formData = new FormData();
 
-      method: "POST",
+formData.append("nama", nama);
+formData.append("ucapan", ucapan);
 
-      headers: {
-        "Content-Type": "application/json"
-      },
-
-      body: JSON.stringify({
-        nama,
-        ucapan
-      })
-
-    });
+const response = await fetch(API_URL, {
+  method: "POST",
+  body: formData
+});
 
     const result =
       await response.json();
