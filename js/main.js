@@ -15,16 +15,26 @@ const targetDate = new Date("2026-06-19T09:00:00");
 const cover = document.getElementById("cover");
 const openBtn = document.getElementById("openInvitation");
 
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
-const coverCountdown = document.getElementById("coverCountdown");
-const countdown = document.getElementById("countdown");
+const mainContent =
+  document.getElementById("mainContent");
 
-const guestForm = document.getElementById("guestForm");
-const submitBtn = document.getElementById("submitBtn");
+const music =
+  document.getElementById("bgMusic");
 
-const guestList = document.getElementById("guestbook");
-const mainContent = document.getElementById("mainContent");
+const musicBtn =
+  document.getElementById("musicBtn");
+
+const countdown =
+  document.getElementById("countdown");
+
+const guestForm =
+  document.getElementById("guestForm");
+
+const submitBtn =
+  document.getElementById("submitBtn");
+
+const guestList =
+  document.getElementById("guestbook");
 
 // =====================================================
 // BUKA UNDANGAN
@@ -33,6 +43,7 @@ const mainContent = document.getElementById("mainContent");
 openBtn.addEventListener("click", async () => {
 
   cover.classList.add("hidden");
+
   mainContent.classList.remove("hidden");
 
   try {
@@ -268,3 +279,31 @@ guestForm.addEventListener("submit", async (e) => {
   submitBtn.innerText = "Kirim Ucapan";
 
 });
+// =====================================================
+// SCROLL ANIMATION
+// =====================================================
+
+const observer = new IntersectionObserver(
+  entries => {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting) {
+
+        entry.target.classList.add("show");
+
+      }
+
+    });
+
+  },
+  {
+    threshold: 0.1
+  }
+);
+
+document
+  .querySelectorAll(".fade-section")
+  .forEach(section => {
+    observer.observe(section);
+  });
