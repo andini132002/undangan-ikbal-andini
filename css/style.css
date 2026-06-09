@@ -96,6 +96,94 @@ a{
   background-repeat:no-repeat;
 }
 
+.cover{
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+  linear-gradient(
+    rgba(0,0,0,.25),
+    rgba(0,0,0,.25)
+  ),
+  url("../assets/bg-cover.jpg");
+
+  background-size:cover;
+  background-position:center;
+
+  color:white;
+}
+
+.cover-overlay{
+
+  width:100%;
+  max-width:500px;
+
+  min-height:100vh;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  padding:60px 25px;
+}
+
+.cover-top{
+  text-align:center;
+}
+
+.cover-subtitle{
+  letter-spacing:3px;
+  font-size:.9rem;
+  margin-bottom:10px;
+}
+
+.cover-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem;
+  line-height:1.1;
+}
+
+.cover-photo{
+  display:flex;
+  justify-content:center;
+}
+
+.cover-photo img{
+
+  width:260px;
+  height:260px;
+
+  object-fit:cover;
+
+  border-radius:999px;
+
+  border:5px solid rgba(255,255,255,.8);
+
+  box-shadow:
+  0 20px 40px rgba(0,0,0,.25);
+}
+
+.cover-bottom{
+  text-align:center;
+}
+
+.guest-label{
+  margin-bottom:10px;
+}
+
+.guest-name{
+
+  font-size:1.4rem;
+
+  margin-bottom:20px;
+
+  color:white;
+}
+
 .cover-overlay{
   color:white;
   padding:30px;

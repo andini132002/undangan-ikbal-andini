@@ -16,12 +16,14 @@ const params =
   );
 
 const guestName =
-  params.get("to");
+  decodeURIComponent(
+    params.get("to") || ""
+  );
 
-if (
-  guestName &&
-  document.getElementById("guestName")
-) {
+if (guestName) {
+  document.getElementById("guestName").textContent =
+    guestName;
+}
 
   document.getElementById(
     "guestName"
