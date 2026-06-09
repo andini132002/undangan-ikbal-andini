@@ -137,14 +137,17 @@ a{
 
 .cover-subtitle{
   letter-spacing:3px;
-  font-size:.9rem;
+  font-size:.8rem;
   margin-bottom:10px;
 }
 
 .cover-title{
   font-family:'Cormorant Garamond',serif;
-  font-size:4rem;
+  font-size:3.2rem;
+  font-weight:700;
   line-height:1.1;
+
+  margin-top:10px;
 }
 
 .cover-photo{
@@ -177,7 +180,7 @@ a{
 
 .guest-name{
 
-  font-size:1.4rem;
+  font-size:1.2rem;
 
   margin-bottom:20px;
 
@@ -197,7 +200,7 @@ a{
 
 .cover-title{
   font-family:'Cormorant Garamond',serif;
-  font-size:5rem;
+  font-size:3rem;
   line-height:1;
 }
 
@@ -719,9 +722,9 @@ backdrop-filter:blur(8px);
 
 @media(max-width:768px){
 
-  .cover-title{
-    font-size:3.2rem;
-  }
+.cover-title{
+  font-size:2.6rem;
+}
 
   .section-title{
     font-size:2.3rem;
@@ -882,7 +885,7 @@ backdrop-filter:blur(8px);  border-radius:20px;
 
   color:white;
 
-  font-size:1.5rem;
+  font-size:1.2rem;
 
   font-weight:600;
 }

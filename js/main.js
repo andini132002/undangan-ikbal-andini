@@ -30,7 +30,7 @@ if (guestName) {
   ).textContent =
     decodeURIComponent(guestName);
 
-}
+
 
 // =====================================================
 // ELEMENT
