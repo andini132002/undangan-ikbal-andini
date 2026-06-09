@@ -64,7 +64,7 @@ const guestList =
 
 openBtn.addEventListener("click", async () => {
 
-  cover.classList.add("hidden");
+  cover.style.display = "none";
 
   mainContent.classList.remove("hidden");
 
@@ -78,20 +78,24 @@ openBtn.addEventListener("click", async () => {
 
   } catch (err) {
 
-    console.log(err);
+    console.log("Music error:", err);
 
   }
 
   setTimeout(() => {
 
-    document
-      .getElementById("ayatSection")
-      .scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+    const ayat =
+      document.getElementById("ayatSection");
+
+    if (ayat) {
+
+      ayat.scrollIntoView({
+        behavior: "smooth"
       });
 
-  }, 500);
+    }
+
+  }, 300);
 
 });
 
@@ -187,13 +191,7 @@ function updateCountdown() {
       </div>
     </div>
   `;
-  coverCountdown.innerHTML = `
-${days} Hari
-${hours} Jam
-${minutes} Menit
-${seconds} Detik
-`;
-}
+  
 
 updateCountdown();
 

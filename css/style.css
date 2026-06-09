@@ -84,17 +84,16 @@ a{
   justify-content:center;
   align-items:center;
 
-  text-align:center;
-
-  background:
+  background-image:
     linear-gradient(
-      rgba(135,206,235,.55),
-      rgba(91,184,223,.55)
+      rgba(135,206,235,.35),
+      rgba(135,206,235,.35)
     ),
-    url("../assets/bg-cover.jpg");
+    url("../assets/cover.jpg");
 
   background-size:cover;
   background-position:center;
+  background-repeat:no-repeat;
 }
 
 .cover-overlay{
