@@ -5,10 +5,15 @@
 const API_URL =
   "https://script.google.com/macros/s/AKfycbx3Xdy6aVWy-9AA-8XwaWDYNs0s1MzIANo5SYh0D0ODYv5q_8BVNyBtrUIMQjycP87i/exec";
 
-const targetDate = new Date("2026-06-19T09:00:00");
-// ======================
+const targetDate =
+  new Date("2026-06-19T09:00:00");
+
+
+// =====================================================
 // NAMA TAMU DARI URL
-// ======================
+// contoh:
+// ?to=Rausan%20Yorisa
+// =====================================================
 
 const params =
   new URLSearchParams(
@@ -16,28 +21,28 @@ const params =
   );
 
 const guestName =
-  decodeURIComponent(
-    params.get("to") || ""
-  );
+  params.get("to");
 
-if (guestName) {
-  document.getElementById("guestName").textContent =
-    guestName;
-}
-
+if (
+  guestName &&
+  document.getElementById("guestName")
+) {
   document.getElementById(
     "guestName"
   ).textContent =
     decodeURIComponent(guestName);
-
+}
 
 
 // =====================================================
 // ELEMENT
 // =====================================================
 
-const cover = document.getElementById("cover");
-const openBtn = document.getElementById("openInvitation");
+const cover =
+  document.getElementById("cover");
+
+const openBtn =
+  document.getElementById("openInvitation");
 
 const mainContent =
   document.getElementById("mainContent");
@@ -57,78 +62,87 @@ const guestForm =
 const submitBtn =
   document.getElementById("submitBtn");
 
-const guestList =
+const guestbook =
   document.getElementById("guestbook");
+
 
 // =====================================================
 // BUKA UNDANGAN
 // =====================================================
 
-openBtn.addEventListener("click", async () => {
+openBtn.addEventListener(
+  "click",
+  async () => {
 
-  cover.style.display = "none";
+    cover.style.display = "none";
 
-  mainContent.classList.remove("hidden");
+    mainContent.classList.remove(
+      "hidden"
+    );
 
-  try {
+    try {
 
-    music.volume = 0.5;
+      music.volume = 0.5;
 
-    await music.play();
+      await music.play();
 
-    musicBtn.innerHTML = "🔊";
+      musicBtn.innerHTML = "🔊";
 
-  } catch (err) {
+    } catch (err) {
 
-    console.log("Music error:", err);
-
-  }
-
-  setTimeout(() => {
-
-    const ayat =
-      document.getElementById("ayatSection");
-
-    if (ayat) {
-
-      ayat.scrollIntoView({
-        behavior: "smooth"
-      });
+      console.log(
+        "Autoplay ditolak browser:",
+        err
+      );
 
     }
 
-  }, 300);
+    setTimeout(() => {
 
-});
+      const ayat =
+        document.getElementById(
+          "ayatSection"
+        );
+
+      if (ayat) {
+
+        ayat.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }
+
+    }, 300);
+
+  }
+);
 
 
 // =====================================================
 // TOGGLE MUSIC
 // =====================================================
 
-let musicPlaying = true;
+musicBtn.addEventListener(
+  "click",
+  () => {
 
-musicBtn.addEventListener("click", () => {
+    if (music.paused) {
 
-  if (music.paused) {
+      music.play();
 
-    music.play();
+      musicBtn.innerHTML = "🔊";
 
-    musicBtn.innerHTML = "🔊";
+    } else {
 
-    musicPlaying = true;
+      music.pause();
 
-  } else {
+      musicBtn.innerHTML = "🔇";
 
-    music.pause();
-
-    musicBtn.innerHTML = "🔇";
-
-    musicPlaying = false;
+    }
 
   }
-
-});
+);
 
 
 // =====================================================
@@ -137,105 +151,141 @@ musicBtn.addEventListener("click", () => {
 
 function updateCountdown() {
 
-  const now = new Date();
+  if (!countdown) return;
 
-  const distance = targetDate - now;
+  const now =
+    new Date();
+
+  const distance =
+    targetDate - now;
 
   if (distance <= 0) {
 
-    countdown.innerHTML =
-      "<strong>Hari Bahagia Telah Tiba 🎉</strong>";
+    countdown.innerHTML = `
+      <strong>
+        Hari Bahagia Telah Tiba 🎉
+      </strong>
+    `;
 
     return;
   }
 
   const days =
-    Math.floor(distance / (1000 * 60 * 60 * 24));
+    Math.floor(
+      distance /
+      (1000 * 60 * 60 * 24)
+    );
 
   const hours =
     Math.floor(
-      (distance % (1000 * 60 * 60 * 24))
-      / (1000 * 60 * 60)
+      (
+        distance %
+        (1000 * 60 * 60 * 24)
+      ) /
+      (1000 * 60 * 60)
     );
 
   const minutes =
     Math.floor(
-      (distance % (1000 * 60 * 60))
-      / (1000 * 60)
+      (
+        distance %
+        (1000 * 60 * 60)
+      ) /
+      (1000 * 60)
     );
 
   const seconds =
     Math.floor(
-      (distance % (1000 * 60))
-      / 1000
+      (
+        distance %
+        (1000 * 60)
+      ) /
+      1000
     );
 
   countdown.innerHTML = `
-    <div class="countdown-grid">
-      <div>
-        <span>${days}</span>
-        <small>Hari</small>
-      </div>
+    <div class="count-item">
+      <span>${days}</span>
+      <small>Hari</small>
+    </div>
 
-      <div>
-        <span>${hours}</span>
-        <small>Jam</small>
-      </div>
+    <div class="count-item">
+      <span>${hours}</span>
+      <small>Jam</small>
+    </div>
 
-      <div>
-        <span>${minutes}</span>
-        <small>Menit</small>
-      </div>
+    <div class="count-item">
+      <span>${minutes}</span>
+      <small>Menit</small>
+    </div>
 
-      <div>
-        <span>${seconds}</span>
-        <small>Detik</small>
-      </div>
+    <div class="count-item">
+      <span>${seconds}</span>
+      <small>Detik</small>
     </div>
   `;
-  
+}
 
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+setInterval(
+  updateCountdown,
+  1000
+);
+
+
+// =====================================================
+// FORMAT TANGGAL
+// =====================================================
+
+function formatTanggal(
+  waktu
+) {
+
+  if (
+    String(waktu)
+      .includes("/")
+  ) {
+    return waktu;
+  }
+
+  const date =
+    new Date(waktu);
+
+  return date.toLocaleString(
+    "id-ID",
+    {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    }
+  );
+
+}
 
 
 // =====================================================
 // LOAD UCAPAN
 // =====================================================
-function formatTanggal(waktu) {
 
-  // Jika sudah format Indonesia
-  if (String(waktu).includes("/")) {
-    return waktu;
-  }
-
-  const date = new Date(waktu);
-
-  return date.toLocaleString("id-ID", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit"
-  });
-
-}
 async function loadUcapan() {
 
   try {
 
-    const res = await fetch(API_URL);
+    const res =
+      await fetch(API_URL);
 
-    const data = await res.json();
-
-    const guestbook =
-      document.getElementById("guestbook");
+    const data =
+      await res.json();
 
     guestbook.innerHTML = "";
 
-    if (!data.length) {
+    if (
+      !data ||
+      data.length === 0
+    ) {
 
       guestbook.innerHTML = `
         <div class="empty-message">
@@ -249,9 +299,12 @@ async function loadUcapan() {
     data.forEach(item => {
 
       const card =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
 
-      card.className = "guest-card";
+      card.className =
+        "guest-card";
 
       card.innerHTML = `
         <h4 class="guest-header">
@@ -263,11 +316,15 @@ async function loadUcapan() {
         </p>
 
         <small class="guest-time">
-  ${formatTanggal(item.waktu)}
-</small>
+          ${formatTanggal(
+            item.waktu
+          )}
+        </small>
       `;
 
-      guestbook.appendChild(card);
+      guestbook.appendChild(
+        card
+      );
 
     });
 
@@ -275,14 +332,12 @@ async function loadUcapan() {
 
     console.error(error);
 
-    document.getElementById("guestbook").innerHTML = `
+    guestbook.innerHTML = `
       <div class="error-message">
         Gagal memuat ucapan.
       </div>
     `;
-
   }
-
 }
 
 loadUcapan();
@@ -292,97 +347,150 @@ loadUcapan();
 // SUBMIT UCAPAN
 // =====================================================
 
-guestForm.addEventListener("submit", async (e) => {
+guestForm.addEventListener(
+  "submit",
+  async (e) => {
 
-  e.preventDefault();
+    e.preventDefault();
 
-  submitBtn.disabled = true;
-  submitBtn.innerText = "Mengirim...";
+    submitBtn.disabled = true;
 
-  const nama =
-    document.getElementById("nama").value.trim();
+    submitBtn.innerText =
+      "Mengirim...";
 
-  const ucapan =
-    document.getElementById("ucapan").value.trim();
-
-  try {
-
-   const formData = new FormData();
-
-formData.append("nama", nama);
-formData.append("ucapan", ucapan);
-
-const response = await fetch(API_URL, {
-  method: "POST",
-  body: formData
-});
-
-    const result =
-      await response.json();
-
-    if (result.success) {
-
-      guestForm.reset();
-
+    const nama =
       document
-        .getElementById("successMessage")
-        .classList.remove("hidden");
+        .getElementById(
+          "nama"
+        )
+        .value.trim();
 
-      loadUcapan();
+    const ucapan =
+      document
+        .getElementById(
+          "ucapan"
+        )
+        .value.trim();
 
-      setTimeout(() => {
+    try {
+
+      const formData =
+        new FormData();
+
+      formData.append(
+        "nama",
+        nama
+      );
+
+      formData.append(
+        "ucapan",
+        ucapan
+      );
+
+      const response =
+        await fetch(
+          API_URL,
+          {
+            method: "POST",
+            body: formData
+          }
+        );
+
+      const result =
+        await response.json();
+
+      if (
+        result.success
+      ) {
+
+        guestForm.reset();
 
         document
-          .getElementById("successMessage")
-          .classList.add("hidden");
+          .getElementById(
+            "successMessage"
+          )
+          .classList.remove(
+            "hidden"
+          );
 
-      }, 4000);
+        loadUcapan();
+
+        setTimeout(() => {
+
+          document
+            .getElementById(
+              "successMessage"
+            )
+            .classList.add(
+              "hidden"
+            );
+
+        }, 4000);
+
+      }
+
+    } catch (error) {
+
+      console.error(
+        error
+      );
+
+      alert(
+        "Gagal mengirim ucapan."
+      );
+
+    } finally {
+
+      submitBtn.disabled =
+        false;
+
+      submitBtn.innerText =
+        "Kirim Ucapan & Do'a";
 
     }
 
-  } catch (error) {
-
-    console.error(error);
-
-    alert(
-      "Gagal mengirim ucapan."
-    );
-
-  } finally {
-
-    submitBtn.disabled = false;
-
-    submitBtn.innerText =
-      "Kirim Ucapan";
-
   }
+);
 
-});
+
 // =====================================================
 // SCROLL ANIMATION
 // =====================================================
 
-const observer = new IntersectionObserver(
-  entries => {
+const observer =
+  new IntersectionObserver(
+    entries => {
 
-    entries.forEach(entry => {
+      entries.forEach(
+        entry => {
 
-      if (entry.isIntersecting) {
+          if (
+            entry.isIntersecting
+          ) {
 
-        entry.target.classList.add("show");
+            entry.target.classList.add(
+              "show"
+            );
 
-      }
+          }
 
-    });
+        }
+      );
 
-  },
-  {
-    threshold: 0.1
-  }
-);
+    },
+    {
+      threshold: 0.1
+    }
+  );
 
 document
-  .querySelectorAll(".fade-section")
+  .querySelectorAll(
+    ".fade-section"
+  )
   .forEach(section => {
-    observer.observe(section);
+
+    observer.observe(
+      section
+    );
+
   });
