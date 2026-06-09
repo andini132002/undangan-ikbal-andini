@@ -705,3 +705,124 @@ backdrop-filter:blur(8px);  border-radius:20px;
   color:red;
   padding:20px;
 }
+
+/* ===================== */
+/* PREMIUM COVER */
+/* ===================== */
+
+.cover{
+  min-height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:
+  linear-gradient(
+    rgba(0,0,0,.25),
+    rgba(0,0,0,.25)
+  ),
+  url("../assets/cover.jpg");
+
+  background-size:cover;
+  background-position:center;
+}
+
+.cover-overlay{
+  width:100%;
+  padding:20px;
+}
+
+.cover-card{
+
+  max-width:520px;
+
+  margin:auto;
+
+  text-align:center;
+
+  padding:50px 35px;
+
+  border-radius:32px;
+
+  backdrop-filter:blur(14px);
+
+  background:
+  rgba(255,255,255,.12);
+
+  border:
+  1px solid rgba(255,255,255,.25);
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.18);
+}
+
+.cover-subtitle{
+
+  color:white;
+
+  letter-spacing:4px;
+
+  font-size:.85rem;
+
+  margin-bottom:18px;
+}
+
+.cover-title{
+
+  color:white;
+
+  font-size:5rem;
+
+  line-height:1;
+
+  margin-bottom:35px;
+}
+
+.guest-wrapper{
+
+  margin-bottom:35px;
+}
+
+.guest-label{
+
+  color:white;
+
+  margin-bottom:10px;
+}
+
+.guest-name{
+
+  color:white;
+
+  font-size:1.5rem;
+
+  font-weight:600;
+}
+
+.open-btn{
+
+  background:white;
+
+  color:var(--primary-dark);
+
+  border:none;
+
+  padding:14px 34px;
+
+  border-radius:999px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.open-btn:hover{
+
+  transform:translateY(-3px);
+
+  box-shadow:
+  0 15px 30px rgba(255,255,255,.25);
+}

@@ -6,7 +6,29 @@ const API_URL =
   "https://script.google.com/macros/s/AKfycbx3Xdy6aVWy-9AA-8XwaWDYNs0s1MzIANo5SYh0D0ODYv5q_8BVNyBtrUIMQjycP87i/exec";
 
 const targetDate = new Date("2026-06-19T09:00:00");
+// ======================
+// NAMA TAMU DARI URL
+// ======================
 
+const params =
+  new URLSearchParams(
+    window.location.search
+  );
+
+const guestName =
+  params.get("to");
+
+if (
+  guestName &&
+  document.getElementById("guestName")
+) {
+
+  document.getElementById(
+    "guestName"
+  ).textContent =
+    decodeURIComponent(guestName);
+
+}
 
 // =====================================================
 // ELEMENT
