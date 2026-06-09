@@ -70,53 +70,39 @@ const guestbook =
 // BUKA UNDANGAN
 // =====================================================
 
-openBtn.addEventListener(
-  "click",
-  async () => {
+openBtn.addEventListener("click", async () => {
 
-    cover.style.display = "none";
+  cover.style.display = "none";
 
-    mainContent.classList.remove(
-      "hidden"
-    );
+  const heroWedding =
+    document.getElementById("heroWedding");
 
-    try {
+  heroWedding.classList.remove("hidden");
 
-      music.volume = 0.5;
+  try {
 
-      await music.play();
+    music.volume = 0.5;
+    await music.play();
 
-      musicBtn.innerHTML = "🔊";
-
-    } catch (err) {
-
-      console.log(
-        "Autoplay ditolak browser:",
-        err
-      );
-
-    }
-
-    setTimeout(() => {
-
-      const ayat =
-        document.getElementById(
-          "ayatSection"
-        );
-
-      if (ayat) {
-
-        ayat.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-      }
-
-    }, 300);
-
+  } catch(err) {
+    console.log(err);
   }
-);
+
+  setTimeout(() => {
+
+    heroWedding.scrollIntoView({
+      behavior:"smooth"
+    });
+
+  }, 100);
+
+  setTimeout(() => {
+
+    mainContent.classList.remove("hidden");
+
+  }, 2500);
+
+});
 
 
 // =====================================================

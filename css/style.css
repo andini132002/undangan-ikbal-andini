@@ -1074,3 +1074,80 @@ body::after{
 
   border-radius:999px;
 }
+
+/* ===================== */
+/* HERO WEDDING */
+/* ===================== */
+
+.hero-wedding{
+  min-height:100vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  background:white;
+
+  padding:40px 20px;
+}
+
+.hero-wedding-content{
+  animation:fadeUp 1.2s ease;
+}
+
+.hero-wedding-subtitle{
+  letter-spacing:5px;
+  text-transform:uppercase;
+
+  color:var(--primary-dark);
+
+  font-size:.9rem;
+
+  margin-bottom:20px;
+}
+
+.hero-wedding-title{
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:4.5rem;
+
+  color:var(--primary-dark);
+
+  margin-bottom:20px;
+}
+
+.hero-wedding-date{
+  font-size:1.2rem;
+
+  letter-spacing:6px;
+
+  color:var(--text-light);
+}
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+
+}
+
+@media(max-width:768px){
+
+  .hero-wedding-title{
+    font-size:3rem;
+  }
+
+  .hero-wedding-date{
+    letter-spacing:3px;
+  }
+
+}
