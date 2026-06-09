@@ -56,14 +56,20 @@ openBtn.addEventListener("click", async () => {
 
   } catch (err) {
 
-    console.log("Autoplay ditolak browser:", err);
+    console.log(err);
 
   }
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+  setTimeout(() => {
+
+    document
+      .getElementById("ayatSection")
+      .scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+  }, 500);
 
 });
 
