@@ -1150,4 +1150,27 @@ body::after{
     letter-spacing:3px;
   }
 
+}/* ===================== */
+/* LOVE DIVIDER */
+/* ===================== */
+
+.love-divider{
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:3rem;
+
+  color:var(--primary-dark);
+
+  font-family:'Cormorant Garamond', serif;
+}
+
+@media(max-width:768px){
+
+  .love-divider{
+    font-size:2.5rem;
+  }
+
 }
