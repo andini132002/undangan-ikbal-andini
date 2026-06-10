@@ -70,7 +70,53 @@ a{
 /* ==========================================
    FLORAL DECORATION
 ========================================== */
+/* ===================== */
+/* FLORAL DECORATION */
+/* ===================== */
 
+.floral-top{
+  position:fixed;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:260px;
+
+  background:
+    url("../assets/floral-top.png")
+    no-repeat center top;
+
+  background-size:contain;
+
+  opacity:.18;
+
+  pointer-events:none;
+
+  z-index:1;
+}
+
+.floral-bottom{
+  position:fixed;
+
+  bottom:0;
+  left:0;
+
+  width:100%;
+  height:260px;
+
+  background:
+    url("../assets/floral-bottom.png")
+    no-repeat center bottom;
+
+  background-size:contain;
+
+  opacity:.18;
+
+  pointer-events:none;
+
+  z-index:1;
+}
 body::before{
 
   content:"";
@@ -135,10 +181,14 @@ body::after{
   margin:auto;
 }
 
-.section{
 
-  padding:90px 0;
+.section{
+  position:relative;
+  z-index:2;
+
+  padding:80px 0;
 }
+
 
 .center{
   text-align:center;
@@ -149,7 +199,8 @@ body::after{
 ========================================== */
 
 .cover{
-
+position:relative;
+z-index:2;
   min-height:100vh;
 
   display:flex;
@@ -946,8 +997,10 @@ body::after{
 
 .footer{
 
-  text-align:center;
+    position:relative;
+  z-index:2;
 
+  text-align:center;
   padding:40px 20px;
 
   color:var(--text-light);
@@ -1261,54 +1314,3 @@ body::after{
   opacity:.9;
 }
 
-/* ===================== */
-/* FLORAL DECORATION */
-/* ===================== */
-
-body::before{
-  content:"";
-
-  position:fixed;
-
-  top:0;
-  left:0;
-
-  width:100%;
-  height:260px;
-
-  background:
-  url("../assets/floral-top.png")
-  top center no-repeat;
-
-  background-size:contain;
-
-  opacity:.12;
-
-  pointer-events:none;
-
-  z-index:-1;
-}
-
-body::after{
-  content:"";
-
-  position:fixed;
-
-  bottom:0;
-  left:0;
-
-  width:100%;
-  height:260px;
-
-  background:
-  url("../assets/floral-bottom.png")
-  bottom center no-repeat;
-
-  background-size:contain;
-
-  opacity:.12;
-
-  pointer-events:none;
-
-  z-index:-1;
-}
